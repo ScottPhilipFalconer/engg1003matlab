@@ -1,0 +1,10 @@
+
+%this code uses the function imfindcircles to define the edge of the circle
+%the radius of the circle was previously estimated using imdistline
+%this estimated radius was then used in the parameters for imfindcircles
+%the area was calculated using pi*r^2
+image = imread("T1.png");
+[centre, radius] = imfindcircles (image,[12,16], "Sensitivity", 1)
+imshow(image);
+h = viscircles(centre,radius);
+area = pi*(radius*radius)
