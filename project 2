@@ -8,3 +8,6 @@ image = imread("T1.png");
 imshow(image);
 h = viscircles(centre,radius);
 area = pi*(radius*radius)
+dvta = 2*1*tan(1.7453/2); %1.7453 is 100 degrees in radians
+radiusm = radius * dvta
+aream = pi*radiusm^2
