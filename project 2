@@ -1,4 +1,4 @@
-
+threshold = 1;
 %this code uses the function imfindcircles to define the edge of the circle
 %the radius of the circle was previously estimated using imdistline
 %this estimated radius was then used in the parameters for imfindcircles
@@ -8,7 +8,15 @@ image = imread("T1.png");
 imshow(image);
 h = viscircles(centre,radius);
 area = pi*(radius*radius)
-dvta = 2*1*(tan(1.7453/2)) %1.7453 is 100 degrees in radians
+dvta = 2*1*(tan(1.7453/2)); %1.7453 is 100 degrees in radians
 radiusm = radius * dvta
 aream = pi*radiusm^2
 diagdist = ((35.3758^2 + 35.3758^2)^(1/2)) * dvta %this uses the established centrepoint
+
+%the code below is for task 2 
+image2 = imread("T2.png");
+[~,threshold] = edge(image2,'sobel');
+imedge = edge(image2,'sobel',threshold);
+imshow(imedge)
+[centre2, radius2] = imfindcircles(imedge,[14,15],"Sensitivity",0.9947)
+area2 = pi*radius^2
